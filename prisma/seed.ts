@@ -93,9 +93,9 @@ async function seedUsers(): Promise<void> {
         });
     }
 
-    const adminEmail = (process.env.ADMIN_EMAIL || "owner@mokapos.local").trim().toLowerCase();
-    const adminName = (process.env.ADMIN_NAME || "Owner Moka").trim();
-    const adminPassword = process.env.ADMIN_PASSWORD || "MokaAdmin2026!";
+    const adminEmail = (process.env.ADMIN_EMAIL || "admin").trim().toLowerCase();
+    const adminName = (process.env.ADMIN_NAME || "Admin").trim();
+    const adminPassword = process.env.ADMIN_PASSWORD || "admin";
     const adminPasswordHash = await bcrypt.hash(adminPassword, 10);
 
     await prisma.user.upsert({

@@ -220,12 +220,12 @@ export default function LoginForm({ initialError, redirect }: LoginFormProps) {
 
                 <div>
                     <label htmlFor="email" className="moka-label">
-                        Email
+                        Email / Username
                     </label>
                     <input
                         id="email"
                         className="moka-input mt-1 block w-full"
-                        type="email"
+                        type="text"
                         name="email"
                         value={email}
                         onChange={(event) => setEmail(event.target.value)}

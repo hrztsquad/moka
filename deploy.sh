@@ -31,15 +31,15 @@ if [ ! -f .env ]; then
   sed -i "s|^DATABASE_URL=.*|DATABASE_URL=\"postgresql://postgres:${DB_PASS}@postgres:5432/moka_pos_bar?schema=public\"|" .env
 
   if [ -t 0 ]; then
-    read -rp "Email Admin Anda [owner@mokapos.local]: " INPUT_EMAIL
-    read -rp "Nama Admin Anda [Owner Moka]: " INPUT_NAME
-    read -rsp "Password Admin Anda [MokaAdmin2026!]: " INPUT_PASS
+    read -rp "Username / Email Admin Anda [admin]: " INPUT_EMAIL
+    read -rp "Nama Admin Anda [Admin]: " INPUT_NAME
+    read -rsp "Password Admin Anda [admin]: " INPUT_PASS
     echo ""
     read -rp "Port aplikasi [3000]: " INPUT_PORT
 
-    ADMIN_EMAIL=${INPUT_EMAIL:-owner@mokapos.local}
-    ADMIN_NAME=${INPUT_NAME:-Owner Moka}
-    ADMIN_PASSWORD=${INPUT_PASS:-MokaAdmin2026!}
+    ADMIN_EMAIL=${INPUT_EMAIL:-admin}
+    ADMIN_NAME=${INPUT_NAME:-Admin}
+    ADMIN_PASSWORD=${INPUT_PASS:-admin}
     APP_PORT=${INPUT_PORT:-3000}
 
     sed -i "s|^ADMIN_EMAIL=.*|ADMIN_EMAIL=\"${ADMIN_EMAIL}\"|" .env
@@ -72,7 +72,7 @@ echo ""
 echo "[5/5] Deployment selesai!"
 echo "============================================"
 echo "URL Aplikasi : http://${SERVER_IP}:${APP_PORT:-3000}"
-echo "Login Admin  : ${ADMIN_EMAIL:-owner@mokapos.local}"
+echo "Login Admin  : ${ADMIN_EMAIL:-admin}"
 echo "Password     : (sesuai yang Anda masukkan / default di .env)"
 echo "Demo Kasir   : kasir@coffeeshop.test / password"
 echo "============================================"

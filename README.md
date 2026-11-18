@@ -47,8 +47,8 @@ This project is focused on delivering a modern, production-ready POS experience 
 ## Akun Login Default (Seeder)
 
 - **Admin Khusus Anda** (dapat dikustomisasi lewat `.env` / saat menjalankan `./deploy.sh`):
-  - Email: `owner@mokapos.local`
-  - Password: `MokaAdmin2026!`
+  - Username / Email: `admin`
+  - Password: `admin`
 - **Akun Demo** (password semua akun demo: `password`):
   - Admin: `admin@coffeeshop.test`
   - Manager: `manager@coffeeshop.test`
