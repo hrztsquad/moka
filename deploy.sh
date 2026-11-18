@@ -13,8 +13,15 @@ else
 fi
 
 if ! docker compose version >/dev/null 2>&1; then
-  echo "Installing docker-compose-plugin..."
-  apt-get update -y && apt-get install -y docker-compose-plugin
+  echo "Installing Docker Compose plugin..."
+  if apt-cache show docker-compose-plugin >/dev/null 2>&1; then
+    apt-get update -y && apt-get install -y docker-compose-plugin
+  else
+    ARCH=$(uname -m)
+    mkdir -p /usr/local/lib/docker/cli-plugins
+    curl -fsSL "https://github.com/docker/compose/releases/latest/download/docker-compose-linux-${ARCH}" -o /usr/local/lib/docker/cli-plugins/docker-compose
+    chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
+  fi
 fi
 
 # 2. Prepare .env if missing
